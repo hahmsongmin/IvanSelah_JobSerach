@@ -17,8 +17,12 @@ def extract_job(result):
     job_link_work = result.select_one("span.rcrtTitle > a")["href"]
     job_link = re.sub('[^0-9]', "", job_link_work)
 
-    return {'회사': company, '채용': title, '지역': location, "링크": f"https://job.incruit.com/jobdb_info/jobpost.asp?job={job_link}"}
-
+    return {
+        '회사': company,
+        '채용': title,
+        '지역': location,
+        "링크": f"https://job.incruit.com/jobdb_info/jobpost.asp?job={job_link}"
+    }
 
 def extract_incruit_jobs(keyword, pagesNum):
     jobs = list()
