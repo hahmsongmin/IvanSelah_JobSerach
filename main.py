@@ -1,18 +1,11 @@
-import os
-import requests
-from bs4 import BeautifulSoup
+from jobKorea import extract_jobKorea_jobs
+from incruit import extract_incruit_jobs
 
+user_input = input("검색키워드를 입력해주세요 : ")
+search_pages = int(input("검색할페이지수를 입력해주세요 : "))
 
-# user_input = input("검색키워드를 입력해주세요 : ")
-job_url = "https://m.jobkorea.co.kr/Search/?ts_search=python&ord=ExactDesc&tabType=recruit&page_no=1"
-jobKorea = requests.get(job_url)
-soup = BeautifulSoup(jobKorea.content, 'html.parser')
-pagination = soup.select_one("div.tplPagination ul")
+jobKorea_jobs = extract_jobKorea_jobs(user_input, search_pages)
+incruit_jobs = extract_incruit_jobs(user_input, search_pages)
 
-pages = pagination.find_all('a')
-pages_list = list()
-
-for page in pages:
-    pages_list.append(int(page.get_text()))
-
-max_page = pages_list[-1]
+jobs = jobKorea_jobs + incruit_jobs
+print(jobs)
