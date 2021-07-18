@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.84.0" />
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <title>Job Search!</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.0/examples/cover/"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      input {
+        height: 100px;
+        width: 300px;
+        text-align: center;
+        font-size: 2rem;
+        background-color: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        color: #f5f6fa;
+      }
+      input:focus {
+        outline: none;
+        border-bottom: 2px solid #f5f6fa;
+      }
+      input::placeholder {
+        color: #f5f6fa;
+      }
+      h1 {
+        color: #f1c40f;
+        font-weight: bold;
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+      .btn-warning {
+        margin-top: 10px;
+        text-align: center;
+        width: 200px;
+        font-weight: bold;
+        font-size: 2rem;
+        background-color: #fff;
+        border: none;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/static/cover.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto"></header>
+      <main class="px-3">
+        <h1>🚀 Search Job For You 🚀</h1>
+        <form action="/report" method="GET">
+          <div class="mybox">
+            <input
+              type="text"
+              placeholder="검색어"
+              name="keyword"
+              required
+              autocomplete="off"
+            />
+            <input
+              type="text"
+              placeholder="검색할 페이지 수"
+              name="pages"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <p></p>
+          <button class="btn btn-warning">Search⚡</button>
+        </form>
+      </main>
+      <footer class="mt-auto text-white-50">
+        <p>ⓒ IvanSelah.</p>
+      </footer>
+    </div>
+  </body>
+</html>

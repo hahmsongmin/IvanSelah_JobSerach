@@ -2,13 +2,13 @@ from save import save_to_file
 from flask import Flask, render_template, request, redirect, send_file
 from main import get_jobs
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 
 db = {}
 
 @app.route("/")
 def home():
-    return render_template('potato.html')
+    return render_template('index.html')
 
 @app.route("/report")
 def report():
@@ -25,7 +25,7 @@ def report():
             db[keyword] = jobs
     else:
         return redirect("/")
-    return render_template('report.html', keyword= keyword, resultNumber = len(jobs), jobs=jobs)
+    return render_template('index_result.html', keyword= keyword, resultNumber = len(jobs), jobs=jobs)
 
 
 @app.route("/export")
