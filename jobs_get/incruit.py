@@ -25,6 +25,7 @@ def extract_job(result):
     }
 
 def extract_incruit_jobs(keyword, pagesNum):
+    pagesNum = 5
     jobs = list()
     URL = f"https://search.incruit.com/list/search.asp?col=job&il=y&kw={keyword}"
     count = 0

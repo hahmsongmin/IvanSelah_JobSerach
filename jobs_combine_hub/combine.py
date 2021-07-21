@@ -1,6 +1,6 @@
-from jobKorea import extract_jobKorea_jobs
-from incruit import extract_incruit_jobs
-from save import save_to_file
+from jobs_get.jobKorea import extract_jobKorea_jobs
+from jobs_get.incruit import extract_incruit_jobs
+from jobs_save.save import save_to_file
 
 def get_jobs(keyword, pages):
     user_input = keyword

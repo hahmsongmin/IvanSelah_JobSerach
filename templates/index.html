@@ -28,7 +28,7 @@
         -moz-user-select: none;
         user-select: none;
       }
-
+      
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -36,7 +36,7 @@
       }
       input {
         height: 100px;
-        width: 300px;
+        width: 400px;
         text-align: center;
         font-size: 2rem;
         background-color: transparent;
@@ -47,7 +47,7 @@
       }
       input:focus {
         outline: none;
-        border-bottom: 2px solid #f5f6fa;
+        border-bottom: 2px solid #f1c40f;
       }
       input::placeholder {
         color: #f5f6fa;
@@ -67,6 +67,31 @@
         background-color: #fff;
         border: none;
       }
+
+      @media only screen and (max-width: 500px) {
+        input {
+          height: 100px;
+          width: 250px;
+          text-align: center;
+          font-size: 2rem;
+          background-color: transparent;
+          border-top: none;
+          border-left: none;
+          border-right: none;
+          color: #f5f6fa;
+        }
+        input::placeholder {
+          color: #f5f6fa;
+          font-size: 1.2rem;
+        }
+        h1 {
+        color: #f1c40f;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        }
+      }
+    
     </style>
 
     <!-- Custom styles for this template -->
@@ -79,17 +104,34 @@
         <h1>🚀 Search Job For You 🚀</h1>
         <form action="/report" method="GET">
           <div class="mybox">
+            <select
+              class="form-select form-select-lg mb-3"
+              aria-label=".form-select-lg example"
+              name="select" required>
+              <option selected>지역</option>
+              <option value="서울">서울</option>
+              <option value="경기">경기</option>
+              <option value="인천">인천</option>
+              <option value="대전">대전</option>
+              <option value="세종">세종</option>
+              <option value="충남">충남</option>
+              <option value="충북">충북</option>
+              <option value="광주">광주</option>
+              <option value="전남">전남</option>
+              <option value="전북">전북</option>
+              <option value="대구">대구</option>
+              <option value="경북">경북</option>
+              <option value="부산">부산</option>
+              <option value="울산">울산</option>
+              <option value="경남">경남</option>
+              <option value="강원">강원</option>
+              <option value="제주">제주</option>
+              <option value="전국">전국</option>
+            </select>
             <input
               type="text"
-              placeholder="검색어"
+              placeholder="검색어(ex.파이썬, 마케팅)"
               name="keyword"
-              required
-              autocomplete="off"
-            />
-            <input
-              type="text"
-              placeholder="검색할 페이지 수"
-              name="pages"
               required
               autocomplete="off"
             />
@@ -102,5 +144,18 @@
         <p>ⓒ IvanSelah.</p>
       </footer>
     </div>
+    <script>
+      const form = document.querySelector("form");
+      const searching = document.querySelector(".btn .btn-warning");
+      //⚡Searching For You⚡
+
+      function handleClick() {
+           alert("검색중입니다.");
+      }
+      form.addEventListener("submit", handleSubmit);
+
+      searching.addEventListener('click', handleClick);
+
+    </script>
   </body>
 </html>

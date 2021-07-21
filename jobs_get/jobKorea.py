@@ -20,6 +20,7 @@ def extract_job(result):
     }
 
 def extract_jobKorea_jobs(keyword, pagesNum):
+    pagesNum = 5
     jobs = list()
     URL = f"https://m.jobkorea.co.kr/Search/?ts_search={keyword}&ord=ExactDesc&tabType=recruit"
     count = 0

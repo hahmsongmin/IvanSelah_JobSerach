@@ -1,11 +1,12 @@
 import csv, openpyxl
 
-def save_to_file(jobs):
+def save_to_file(jobs, location):
     file = open("jobs.csv", mode="w", encoding='utf-8-sig', newline='')
     writer = csv.writer(file)
     writer.writerow(["회사", "채용", "지역", "링크"])
     for job in jobs:
-        writer.writerow(list(job.values()))
+        if job["지역"][:2] == location:
+            writer.writerow(list(job.values()))
     return
 
     # excel_file = openpyxl.load_workbook('jobs.xlsx')

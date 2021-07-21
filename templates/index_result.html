@@ -38,8 +38,6 @@
         width: 100px;
         text-align: center;
       }
-      .container {
-      }
       a {
         font-size: 1.5rem;
       }
@@ -47,9 +45,12 @@
         border-bottom: 2px solid #f1c40f;
       }
       .jobs-count {
-        margin-top: 2rem;
+        margin-top: 3rem;
         font-family: bold;
         color: #ffcc00;
+      }
+      select {
+        margin-right: 7px;
       }
     </style>
 
@@ -78,32 +79,52 @@
                 <a class="nav-link active" aria-current="page" href="/">홈</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="/export?keyword={{keyword}}"
+                <a
+                  class="nav-link active"
+                  href="/export?keyword={{keyword}}&select={{location}}"
                   >파일로저장</a
                 >
               </li>
             </ul>
+            <div class="super-box">
             <form class="d-flex" action="/report" method="GET">
               <input
-                class="form-control me-2"
-                type="text"
-                placeholder="검색어"
-                name="keyword"
-                aria-label="Search"
-                autocomplete="off"
+              class="form-control me-2"
+              type="text"
+              placeholder="검색어"
+              name="keyword"
+              aria-label="Search"
+              autocomplete="off"
               />
-              <input
-                class="form-control me-2"
-                type="text"
-                placeholder="페이지수"
-                name="pages"
-                aria-label="Search"
-                autocomplete="off"
-              />
+              <select
+              class="form-select"
+              aria-label="Default select example"
+              name="select" required>
+              <option selected>지역</option>
+              <option value="서울">서울</option>
+              <option value="경기">경기</option>
+              <option value="인천">인천</option>
+              <option value="대전">대전</option>
+              <option value="세종">세종</option>
+              <option value="충남">충남</option>
+              <option value="충북">충북</option>
+              <option value="광주">광주</option>
+              <option value="전남">전남</option>
+              <option value="전북">전북</option>
+              <option value="대구">대구</option>
+              <option value="경북">경북</option>
+              <option value="부산">부산</option>
+              <option value="울산">울산</option>
+              <option value="경남">경남</option>
+              <option value="강원">강원</option>
+              <option value="제주">제주</option>
+              <option value="전국">전국</option>
+              </select>
               <button class="btn btn-outline-success" type="submit">
                 Search⚡
               </button>
             </form>
+            </div>
           </div>
         </div>
       </nav>
@@ -113,13 +134,22 @@
     <main class="flex-shrink-0">
       <div class="container">
         <h1 class="jobs-count">총 {{resultNumber}} 개의 채용정보 🚀</h1>
-        {% for job in jobs %}
-        <h1 class="mt-5">{{job.회사}}</h1>
-        <p class="lead">
-          {{job.채용}}
-          <code class="small">{{job.지역}}</code>
-        </p>
-        <a href="{{job.링크}}" target="_blank">채용공고</a>
+        {% for job in jobs %} 
+          {% if location == job.지역[:2] %}
+            <h1 class="mt-5">{{job.회사}}</h1>
+            <p class="lead">
+              {{job.채용}}
+              <code class="small">{{job.지역}}</code>
+            </p>
+            <a href="{{job.링크}}" target="_blank">채용공고</a>
+          {% elif location == '전국' %}
+            <h1 class="mt-5">{{job.회사}}</h1>
+            <p class="lead">
+              {{job.채용}}
+              <code class="small">{{job.지역}}</code>
+            </p>
+            <a href="{{job.링크}}" target="_blank">채용공고</a>
+          {% endif %} 
         {% endfor %}
       </div>
     </main>
@@ -129,6 +159,6 @@
         <span class="text-muted">ⓒ IvanSelah.</span>
       </div>
     </footer>
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
